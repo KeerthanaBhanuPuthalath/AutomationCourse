@@ -1,0 +1,53 @@
+package seleniumBasics;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+public class AlertHandling extends Base
+{
+// alert is predefined interface
+//3 function accept,dismiss, getText, sendKeys
+// 3 types of alert
+// 1. simple alert
+//2. confirm alert
+//3. prompt alert
+	public void verifySimpleAlert()
+	{
+		driver.navigate().to("https://demoqa.com/alerts");	
+		WebElement simpleAlert =driver.findElement(By.id("alertButton"));
+		simpleAlert.click();
+		Alert alerts =driver.switchTo().alert();
+		alerts.accept();
+	}
+	public void verifyConfirmAlert() 
+	{
+		driver.navigate().to("https://demoqa.com/alerts");	
+		WebElement confirmAlert =driver.findElement(By.id("confirmButton"));
+		confirmAlert.click();
+		Alert alerts =driver.switchTo().alert();
+		alerts.accept();
+		//alerts.dismiss();
+		
+	}
+	public void verifyPromptAlert()
+	{
+		driver.navigate().to("https://demoqa.com/alerts");	
+		WebElement promptAlert =driver.findElement(By.id("promtButton"));
+		promptAlert.click();
+		Alert alerts =driver.switchTo().alert();
+		alerts.sendKeys("Keerthana");
+		alerts.accept();
+	}
+	public static void main(String[] args) 
+	{
+		
+		AlertHandling alert = new AlertHandling();
+		alert.initializeBrowser();
+		//alert.verifySimpleAlert();
+		//alert.verifyConfirmAlert();
+		alert.verifyPromptAlert();
+		//alert.browserClose();
+	}
+
+}

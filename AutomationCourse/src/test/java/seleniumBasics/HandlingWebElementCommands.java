@@ -13,6 +13,8 @@ public class HandlingWebElementCommands extends Base
 		messageBox.sendKeys("Keerthana");
 		// to click the button element -click()
 		WebElement showMessageButton = driver.findElement(By.xpath("//button[@id='button-one']"));
+		System.out.println("Displayed: "+showMessageButton.isDisplayed());
+		System.out.println("Enabled : "+showMessageButton.isEnabled());
 		showMessageButton.click();
 		WebElement consoleMessage=driver.findElement(By.xpath("//div[@id='message-one']"));
 		System.out.println(consoleMessage.getText());
