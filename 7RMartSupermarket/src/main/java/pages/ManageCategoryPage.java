@@ -90,7 +90,26 @@ public void searchNewCategory(String category)
 	searchCategory.sendKeys(category);
 	searchButton.click();
 }
- 
 
+public boolean isManageCategoryPageDisplayed()
+{
+	return manageCategory.isDisplayed();
+}
+
+public boolean isNewCategoryFormDisplayed()
+{
+	return manageCategory.isDisplayed();
+}
+
+public boolean isCategoryCreated(String category)
+
+{
+	return manageCategory.isDisplayed();
+}
+
+public boolean isCategoryFound(String category)
+{
+	return manageCategory.isDisplayed();
+}
 
 }

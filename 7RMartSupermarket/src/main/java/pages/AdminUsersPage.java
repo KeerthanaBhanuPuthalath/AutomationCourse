@@ -49,4 +49,19 @@ public void searchNewUser(String username)
 	select.selectByIndex(2);
 	userSearchButton.click();
 }
+
+public boolean  isAdminUsersPageDisplayed()
+{
+	return adminUser.isDisplayed();
+}
+
+public boolean isNewUserDisplayed(String adminusername)
+{
+	return adminUser.isDisplayed();
+}
+
+public boolean isUserFound(String adminusername)
+{
+	return adminUser.isDisplayed();
+}
 }

@@ -2,6 +2,7 @@ package testScripts;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationCore.Base;
@@ -23,6 +24,7 @@ public class ManageCategoryTest extends Base
 		
 		ManageCategoryPage managecategorypage = new ManageCategoryPage(driver);
 		managecategorypage.clickonManageCategory();
+		Assert.assertTrue(managecategorypage.isManageCategoryPageDisplayed(), "Navigation to Manage Category page failed!");
 	}
 	
 @Test	
@@ -38,7 +40,9 @@ public class ManageCategoryTest extends Base
 		ManageCategoryPage managecategorypage = new ManageCategoryPage(driver);
 		managecategorypage.clickonManageCategory();
 		managecategorypage.clickonNewButton();
+		Assert.assertTrue(managecategorypage.isNewCategoryFormDisplayed(), "Failed to navigate to the New Category creation form!");
 	}
+	
 
 @Test
 
@@ -58,6 +62,7 @@ public void verifyWhetherUserAbleToCreateNewCategory() throws IOException
 	managecategorypage.clickonAddCategory(category);
 //	managecategorypage.clickonRadioButton();
 //	managecategorypage.clickOnSaveButton();
+	 Assert.assertTrue(managecategorypage.isCategoryCreated(category), "Category creation failed: New category not found!");
 }
 
 @Test
@@ -74,6 +79,7 @@ public void verifyWhetherUserAbleToSearchTheCategory() throws IOException
 	ManageCategoryPage managecategorypage = new ManageCategoryPage(driver);
 	managecategorypage.clickonManageCategory();
 	managecategorypage.searchNewCategory(category);
+	Assert.assertTrue(managecategorypage.isCategoryFound(category), "Search failed: Category not found!");
 }
 
 }

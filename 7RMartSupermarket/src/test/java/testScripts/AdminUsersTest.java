@@ -2,6 +2,7 @@ package testScripts;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationCore.Base;
@@ -23,7 +24,9 @@ public class AdminUsersTest extends Base
 		
 		AdminUsersPage adminuserspage = new AdminUsersPage(driver);
 		adminuserspage.clickonAdminUsers();
+		Assert.assertTrue(adminuserspage.isAdminUsersPageDisplayed(), "Navigation to Admin Users page failed!");
 	}
+	
 @Test	
 	public void verifyWhetherUserAbleToCreateNewUser() throws IOException
 	{
@@ -39,6 +42,7 @@ public class AdminUsersTest extends Base
 		AdminUsersPage adminuserspage = new AdminUsersPage(driver);
 		adminuserspage.clickonAdminUsers();
 		adminuserspage.newUserCreation(adminusername, adminpassword);
+		Assert.assertTrue(adminuserspage.isNewUserDisplayed(adminusername), "User creation failed: New user not found in Admin Users list!");
 	}
 @Test
 public void verifyWhetherUserAbleToSearchNewUser() throws IOException
@@ -55,5 +59,6 @@ public void verifyWhetherUserAbleToSearchNewUser() throws IOException
 	AdminUsersPage adminuserspage = new AdminUsersPage(driver);
 	adminuserspage.clickonAdminUsers();
 	adminuserspage.searchNewUser(adminusername);
+	Assert.assertTrue(adminuserspage.isUserFound(adminusername), "Search failed: User not found!");
 }
 }

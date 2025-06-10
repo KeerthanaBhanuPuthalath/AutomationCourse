@@ -2,6 +2,7 @@ package testScripts;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationCore.Base;
@@ -26,6 +27,7 @@ public class HomePageTest extends Base
 			HomePage logoutPage = new HomePage(driver);
 			logoutPage.clickOnadmindropdownLink();
 			logoutPage.clickOnLogoutOption();
+			Assert.assertTrue(logoutPage.isLoginPageDisplayed(), "Logout failed: User is not redirected to the login page!");
 		}
 
 }

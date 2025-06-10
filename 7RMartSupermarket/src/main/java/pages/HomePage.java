@@ -26,5 +26,10 @@ public class HomePage
 	{
 		logout.click();
 	}
+	
+	public boolean isLoginPageDisplayed()
+	{
+		return logout.isDisplayed();
+	}
 
 }

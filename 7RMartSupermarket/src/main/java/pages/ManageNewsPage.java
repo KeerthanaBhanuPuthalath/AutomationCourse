@@ -51,4 +51,27 @@ public class ManageNewsPage
 		//resetButton.click();
 	}
 	
+	public boolean isManageNewsPageDisplayed()
+	{
+		return managenews.isDisplayed();
+	}
+	
+	public boolean isNewNewsPageDisplayed()
+	{
+		return managenews.isDisplayed();
+	}
+	
+	public boolean isNewsSaved(String news)
+	{
+		return managenews.isDisplayed();
+	}
+	
+	public boolean isSearchResultsDisplayed()
+	{
+		return managenews.isDisplayed();	
+	}
+	
+	public boolean isNewsFound(String news)
+	{
+		return managenews.isDisplayed();	}
 }

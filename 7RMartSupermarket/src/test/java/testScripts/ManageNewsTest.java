@@ -2,6 +2,7 @@ package testScripts;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationCore.Base;
@@ -25,6 +26,7 @@ public class ManageNewsTest extends Base
 		
 		ManageNewsPage managenewspage = new ManageNewsPage(driver);
 		managenewspage.clickonManagenews();
+		Assert.assertTrue(managenewspage.isManageNewsPageDisplayed(), "Navigation to Manage News page failed!");
 	}
 	
 	
@@ -42,6 +44,7 @@ public class ManageNewsTest extends Base
 		ManageNewsPage managenewspage = new ManageNewsPage(driver);
 		managenewspage.clickonManagenews();
 		managenewspage.clickOnNewButtonFromManageNews();
+		Assert.assertTrue(managenewspage.isNewNewsPageDisplayed(), "Failed to navigate to the New News creation page!");
 	}
 @Test
 	public void verifyWhetherUserAbleToAddNewsAndSave() throws IOException
@@ -57,6 +60,7 @@ public class ManageNewsTest extends Base
 		managenewspage.clickonManagenews();
 		managenewspage.clickOnNewButtonFromManageNews();
 		managenewspage.enterTheNewsInNewPage(news);
+		Assert.assertTrue(managenewspage.isNewsSaved(news), "News creation failed: News entry not found!");
 	}
 
 @Test	
@@ -72,6 +76,7 @@ public class ManageNewsTest extends Base
 		ManageNewsPage managenewspage = new ManageNewsPage(driver);
 		managenewspage.clickonManagenews();
 		managenewspage.clickOnSearchButtonFromManageNewsPage();
+	    Assert.assertTrue(managenewspage.isSearchResultsDisplayed(), "Search failed: No results found!");
 	}
 
 @Test
@@ -89,6 +94,6 @@ public class ManageNewsTest extends Base
 		managenewspage.clickonManagenews();
 		managenewspage.clickOnSearchButtonFromManageNewsPage();
 		managenewspage.enterValueInSearchField(news);
-		
+		Assert.assertTrue(managenewspage.isNewsFound(news), "Search failed: News entry not found!");
 	}
 }
