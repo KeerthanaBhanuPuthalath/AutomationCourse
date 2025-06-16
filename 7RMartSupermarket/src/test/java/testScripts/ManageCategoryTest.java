@@ -12,7 +12,7 @@ import utilities.ExcelUtility;
 
 public class ManageCategoryTest extends Base
 {
-	@Test
+	@Test(description = "User able click on manage category")
 	public void verifyWhetherUserAbleToClickManageCategoryTile() throws IOException
 	{
 		String username = ExcelUtility.getStringData(0, 0,"LoginPage");
@@ -27,7 +27,7 @@ public class ManageCategoryTest extends Base
 		Assert.assertTrue(managecategorypage.isManageCategoryPageDisplayed(), "Navigation to Manage Category page failed!");
 	}
 	
-@Test	
+@Test(description = "User able click on new button from manage category")	
 	public void verifyWhetherUserAbleToNewButtonFromManageCategory() throws IOException
 	{
 		String username = ExcelUtility.getStringData(0, 0,"LoginPage");
@@ -44,7 +44,7 @@ public class ManageCategoryTest extends Base
 	}
 	
 
-@Test
+@Test(description = "User able create new category")
 
 public void verifyWhetherUserAbleToCreateNewCategory() throws IOException
 {
@@ -65,7 +65,7 @@ public void verifyWhetherUserAbleToCreateNewCategory() throws IOException
 	 Assert.assertTrue(managecategorypage.isCategoryCreated(category), "Category creation failed: New category not found!");
 }
 
-@Test
+@Test(description = "User able search the newly added category")
 public void verifyWhetherUserAbleToSearchTheCategory() throws IOException
 {
 	String username = ExcelUtility.getStringData(0, 0,"LoginPage");

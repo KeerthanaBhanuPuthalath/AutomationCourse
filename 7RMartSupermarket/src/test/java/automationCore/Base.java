@@ -1,32 +1,59 @@
 package automationCore;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 
+import constants.Constant;
 import utilities.ScreenShotUtility;
 
 public class Base 
 {
+	Properties prop;
+	FileInputStream file;
 	public WebDriver driver;
 
-@BeforeMethod	
-	public void initializeBrowser()
+@BeforeMethod(alwaysRun =true)	
+@Parameters("browsers")
+	public void initializeBrowser(String browsers) throws Exception
 	{
-		driver = new ChromeDriver();
-		driver.get("https://groceryapp.uniqassosiates.com/admin/login");
+	prop=new Properties();
+	file=new FileInputStream(Constant.CONFIGFILE);
+	prop.load(file);
+		if(browsers.equalsIgnoreCase("chrome"))
+		{
+			driver = new ChromeDriver();
+		}
+		if(browsers.equalsIgnoreCase("edge"))
+		{
+			driver = new EdgeDriver();
+		}
+		if(browsers.equalsIgnoreCase("firefox"))
+		{
+			driver = new FirefoxDriver();
+		}
+		else
+		{
+			throw new Exception("Invalid Browser");
+		}
+		driver.get(prop.getProperty("url"));
 		driver.manage().window().maximize();
 		//implicit wait
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));	
 	}
 
 
-@AfterMethod
+@AfterMethod(alwaysRun = true)
 //	public void browserClose()
 //	{
 //		//driver.close();

@@ -13,7 +13,7 @@ import utilities.ExcelUtility;
 public class ManageNewsTest extends Base
 
 {
-	@Test
+	@Test(description = "User able click on manage news")
 	
 	public void verifyWhetherUserAbleToClickOnManageNewsTile() throws IOException
 	{
@@ -30,7 +30,7 @@ public class ManageNewsTest extends Base
 	}
 	
 	
-	@Test
+	@Test(description = "User able click on new button from manage news")
 	public void verifyWhetherUserAbleToClickOnNewButton() throws IOException
 	{
 		String username = ExcelUtility.getStringData(0, 0,"LoginPage");
@@ -46,7 +46,7 @@ public class ManageNewsTest extends Base
 		managenewspage.clickOnNewButtonFromManageNews();
 		Assert.assertTrue(managenewspage.isNewNewsPageDisplayed(), "Failed to navigate to the New News creation page!");
 	}
-@Test
+@Test(description = "User able to create new news and save the news")
 	public void verifyWhetherUserAbleToAddNewsAndSave() throws IOException
 	{
 		String username = ExcelUtility.getStringData(0, 0,"LoginPage");
@@ -63,7 +63,7 @@ public class ManageNewsTest extends Base
 		Assert.assertTrue(managenewspage.isNewsSaved(news), "News creation failed: News entry not found!");
 	}
 
-@Test	
+@Test(description = "User able to click on search button")	
 	public void verifyWhetherUserAbleToClickOnSearchButton() throws IOException
 	{
 		String username = ExcelUtility.getStringData(0, 0,"LoginPage");
@@ -79,7 +79,7 @@ public class ManageNewsTest extends Base
 	    Assert.assertTrue(managenewspage.isSearchResultsDisplayed(), "Search failed: No results found!");
 	}
 
-@Test
+@Test(description = "User able to search newly added news")
 	public void verifyWhetherUserAbleToSearchTheEnteredValue() throws IOException
 	{
 		String username = ExcelUtility.getStringData(0, 0,"LoginPage");
