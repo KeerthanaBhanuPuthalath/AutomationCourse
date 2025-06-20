@@ -16,6 +16,7 @@ import org.testng.annotations.Parameters;
 
 import constants.Constant;
 import utilities.ScreenShotUtility;
+import utilities.WaitUtility;
 
 public class Base {
 	Properties prop;
@@ -40,8 +41,10 @@ public class Base {
 		driver.get(prop.getProperty("url"));
 		driver.manage().window().maximize();
 		// implicit wait
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-	}
+		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		WaitUtility wait = new WaitUtility();
+		wait.implicitWait(driver);
+	};
 
 	@AfterMethod(alwaysRun = true)
 //	public void browserClose()

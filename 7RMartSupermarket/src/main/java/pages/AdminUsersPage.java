@@ -6,6 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import utilities.PageUtility;
+import utilities.WaitUtility;
+
 public class AdminUsersPage 
 {
 	public WebDriver driver;
@@ -38,15 +41,20 @@ public void newUserCreation(String username, String password)
 	passwordField.sendKeys(password);
 	Select select = new Select(usertypeDropdown);
 	select.selectByIndex(2);
+	WaitUtility wait = new WaitUtility();
+	wait.waitUntilElementToBeClickable(driver, saveButton);
 	saveButton.click();
+	
 }
 
 public void searchNewUser(String username)
 {
 	searchButton.click();
 	usernameSearch.sendKeys(username);
-	Select select = new Select(searchDropdown);
-	select.selectByIndex(2);
+	PageUtility page = new PageUtility();
+	page.selectDropdownWithindex(searchDropdown, 2);
+	//Select select = new Select(searchDropdown);
+	//select.selectByIndex(2);
 	userSearchButton.click();
 }
 
