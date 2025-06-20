@@ -3,6 +3,7 @@ package testScripts;
 import java.io.IOException;
 
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import automationCore.Base;
@@ -54,17 +55,23 @@ public class LoginTest extends Base
 	
 
 
-@Test(description = "User can't login because of invalid password and invalid username",priority=4,groups = {"smoke"})
-	public void verifyLoginWIthInvalidPasswordAndInvalidUSername() throws IOException
+@Test(description = "User can't login because of invalid password and invalid username",priority=4,groups = {"smoke"},dataProvider = "logindata")
+	public void verifyLoginWIthInvalidPasswordAndInvalidUSername(String username, String password) throws IOException
 	{
-		String username = ExcelUtility.getStringData(3, 0,"LoginPage");
-		String password = ExcelUtility.getStringData(3, 1,"LoginPage");
+		//String username = ExcelUtility.getStringData(3, 0,"LoginPage");
+		//String password = ExcelUtility.getStringData(3, 1,"LoginPage");
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.enterUserNameFieldOnUserNameField(username);
 		loginPage.enterPasswordOnPasswordField(password);
 		loginPage.signUpButton();
 		
 	}
-
-	
+@DataProvider(name="logindata")
+public Object[][]getDataFromDataProvider()
+{
+	return new Object[][]
+			{
+				new Object[]{"Test1","Test2",}, new Object[] {"Test3","Test4"}
+			};
+}
 }
