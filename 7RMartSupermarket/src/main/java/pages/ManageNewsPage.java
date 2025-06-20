@@ -23,32 +23,37 @@ public class ManageNewsPage
 	@FindBy(xpath="//input[@type='text']")private WebElement searchBox;
 	@FindBy(xpath="//button[@class='btn btn-danger btn-fix']")private WebElement searchBoxButton;
 	@FindBy(xpath="//a[@class='btn btn-default btn-fix']")private WebElement resetButton;
-	public void clickonManagenews()
+	public ManageNewsPage clickonManagenews()
 	{
 		managenews.click();
+		return this;
 	}
 	
-	public void clickOnNewButtonFromManageNews()
+	public ManageNewsPage clickOnNewButtonFromManageNews()
 	{
 		newButton.click();
+		return this;
 	}
 	
-	public void enterTheNewsInNewPage(String news)
+	public ManageNewsPage enterTheNewsInNewPage(String news)
 	{
 		textField.sendKeys(news);
 		saveButton.click();
+		return this;
 	}
 	
-	public void clickOnSearchButtonFromManageNewsPage()
+	public ManageNewsPage clickOnSearchButtonFromManageNewsPage()
 	{
 		searchButton.click();
+		return this;
 	}
 	
-	public void enterValueInSearchField(String news)
+	public ManageNewsPage enterValueInSearchField(String news)
 	{
 		searchBox.sendKeys(news);
 		searchBoxButton.click();
 		//resetButton.click();
+		return this;
 	}
 	
 	public boolean isManageNewsPageDisplayed()

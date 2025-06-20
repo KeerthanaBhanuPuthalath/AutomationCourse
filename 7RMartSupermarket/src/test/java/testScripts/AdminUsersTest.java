@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import automationCore.Base;
 import pages.AdminUsersPage;
+import pages.HomePage;
 import pages.LoginPage;
 import utilities.ExcelUtility;
 import utilities.RandomDataUtility;
@@ -16,21 +17,23 @@ public class AdminUsersTest extends Base
 	@Test(description="User ables to click on Admin users",retryAnalyzer = retry.Retry.class)
 	public void verifyWhetherUserAbleToClickAdminUsersTile() throws IOException
 	{
+		HomePage homepage;
 		String username = ExcelUtility.getStringData(0, 0,"LoginPage");
 		String password = ExcelUtility.getStringData(0, 1,"LoginPage");
 		LoginPage loginPage = new LoginPage(driver);
-		loginPage.enterUserNameFieldOnUserNameField(username);
-		loginPage.enterPasswordOnPasswordField(password);
-		loginPage.signUpButton();
-		
-		AdminUsersPage adminuserspage = new AdminUsersPage(driver);
-		adminuserspage.clickonAdminUsers();
+		loginPage.enterUserNameFieldOnUserNameField(username).enterPasswordOnPasswordField(password);
+		//loginPage.enterPasswordOnPasswordField(password);
+		homepage=loginPage.signUpButton();
+		AdminUsersPage adminuserspage;
+		//AdminUsersPage adminuserspage = new AdminUsersPage(driver);
+		adminuserspage=homepage.clickonAdminUsers();
 		Assert.assertTrue(adminuserspage.isAdminUsersPageDisplayed(), "Navigation to Admin Users page failed!");
 	}
 	
 @Test(description = "User able to add new user")	
 	public void verifyWhetherUserAbleToCreateNewUser() throws IOException
 	{
+	HomePage homepage;
 		String username = ExcelUtility.getStringData(0, 0,"LoginPage");
 		String password = ExcelUtility.getStringData(0, 1,"LoginPage");
 		//String adminusername = ExcelUtility.getStringData(0, 0,"AdminUsers");
@@ -39,30 +42,31 @@ public class AdminUsersTest extends Base
 		String adminusername = randomData.createRandomUserName();
 		String adminpassword = randomData.createRandomPassword();
 		LoginPage loginPage = new LoginPage(driver);
-		loginPage.enterUserNameFieldOnUserNameField(username);
-		loginPage.enterPasswordOnPasswordField(password);
-		loginPage.signUpButton();
+		loginPage.enterUserNameFieldOnUserNameField(username).enterPasswordOnPasswordField(password);
+		//loginPage.enterPasswordOnPasswordField(password);
+		homepage=loginPage.signUpButton();
 		
 		AdminUsersPage adminuserspage = new AdminUsersPage(driver);
-		adminuserspage.clickonAdminUsers();
-		adminuserspage.newUserCreation(adminusername, adminpassword);
+		homepage.clickonAdminUsers().newUserCreation(adminusername, adminpassword);
+		//adminuserspage.newUserCreation(adminusername, adminpassword);
 		Assert.assertTrue(adminuserspage.isNewUserDisplayed(adminusername), "User creation failed: New user not found in Admin Users list!");
 	}
 @Test(description = "User able to search the newly added user")
 public void verifyWhetherUserAbleToSearchNewUser() throws IOException
 {
+	HomePage homepage;
 	String username = ExcelUtility.getStringData(0, 0,"LoginPage");
 	String password = ExcelUtility.getStringData(0, 1,"LoginPage");
 	String adminusername = ExcelUtility.getStringData(0, 0,"AdminUsers");
 	//String adminpassword = ExcelUtility.getStringData(0, 1,"AdminUsers");
 	LoginPage loginPage = new LoginPage(driver);
-	loginPage.enterUserNameFieldOnUserNameField(username);
-	loginPage.enterPasswordOnPasswordField(password);
-	loginPage.signUpButton();
+	loginPage.enterUserNameFieldOnUserNameField(username).enterPasswordOnPasswordField(password);
+	//loginPage.enterPasswordOnPasswordField(password);
+	homepage=loginPage.signUpButton();
 	
 	AdminUsersPage adminuserspage = new AdminUsersPage(driver);
-	adminuserspage.clickonAdminUsers();
-	adminuserspage.searchNewUser(adminusername);
+	homepage.clickonAdminUsers().searchNewUser(adminusername);
+	//adminuserspage.searchNewUser(adminusername);
 	Assert.assertTrue(adminuserspage.isUserFound(adminusername), "Search failed: User not found!");
 }
 }

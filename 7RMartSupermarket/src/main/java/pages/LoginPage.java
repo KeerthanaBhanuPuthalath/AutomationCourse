@@ -19,17 +19,20 @@ public class LoginPage
 @FindBy(xpath="//button[@type='submit']")private WebElement signupbutton;
 @FindBy(xpath="//p[text()='Dashboard']")private WebElement dashboard;
 
-public void enterUserNameFieldOnUserNameField(String username)
+public LoginPage enterUserNameFieldOnUserNameField(String username)
 {
 	usernamefield.sendKeys(username);
+	return this;
 }
-public void enterPasswordOnPasswordField(String password)
+public LoginPage enterPasswordOnPasswordField(String password)
 {
 	passwordfield.sendKeys(password);
+	return this;
 }
-public void signUpButton()
+public HomePage signUpButton()
 {
 	signupbutton.click();
+	return new HomePage(driver);
 }
 
 public String dashboardDisplayed()

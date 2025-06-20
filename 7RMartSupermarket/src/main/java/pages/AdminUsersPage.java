@@ -29,13 +29,14 @@ public class AdminUsersPage
 @FindBy(xpath="//select[@name='ut']")private WebElement searchDropdown;
 @FindBy(xpath="//button[@name='Search']")private WebElement userSearchButton;
 @FindBy(xpath="//a[@onclick='click_button(2)']")private WebElement searchButton;
-public void clickonAdminUsers()
+public AdminUsersPage clickonAdminUsers()
 {
 	adminUser.click();
 	newButton.click();
+	return this;
 }
 
-public void newUserCreation(String username, String password)
+public AdminUsersPage newUserCreation(String username, String password)
 {
 	usernameField.sendKeys(username);
 	passwordField.sendKeys(password);
@@ -44,10 +45,11 @@ public void newUserCreation(String username, String password)
 	WaitUtility wait = new WaitUtility();
 	wait.waitUntilElementToBeClickable(driver, saveButton);
 	saveButton.click();
+	return this;
 	
 }
 
-public void searchNewUser(String username)
+public AdminUsersPage searchNewUser(String username)
 {
 	searchButton.click();
 	usernameSearch.sendKeys(username);
@@ -56,6 +58,7 @@ public void searchNewUser(String username)
 	//Select select = new Select(searchDropdown);
 	//select.selectByIndex(2);
 	userSearchButton.click();
+	return this;
 }
 
 public boolean  isAdminUsersPageDisplayed()

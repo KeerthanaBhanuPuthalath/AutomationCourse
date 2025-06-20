@@ -37,18 +37,20 @@ public class ManageCategoryPage
 
 //button[@class='btn btn-danger btn-fix']
 
-public void clickonManageCategory()
+public ManageCategoryPage clickonManageCategory()
 {
 	manageCategory.click();
+	return this;
 	
 }
 
-public void clickonNewButton()
+public ManageCategoryPage clickonNewButton()
 {
 	newButton.click();
+	return this;
 }
 
-public void clickonAddCategory(String category)
+public ManageCategoryPage clickonAddCategory(String category)
 {
 	categoryField.sendKeys(category);
 	selectGroup.click();
@@ -60,6 +62,7 @@ public void clickonAddCategory(String category)
 	topMenu.click();
 	leftMenu.click();
 	saveButton.click();
+	return this;
 }
 
 //public void clickonRadioButton()
@@ -84,11 +87,12 @@ public void clickonAddCategory(String category)
 //	System.out.println("Saved");
 //}
 
-public void searchNewCategory(String category)
+public ManageCategoryPage searchNewCategory(String category)
 {
 	search.click();
 	searchCategory.sendKeys(category);
 	searchButton.click();
+	return this;
 }
 
 public boolean isManageCategoryPageDisplayed()
